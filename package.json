@@ -8,7 +8,8 @@
     "vue2-leaflet": "^2.5.2"
   },
   "scripts": {
-    "build": "node generator.js"
+    "build": "node generator.js",
+    "postinstall": "node generator.js"
   },
   "peerDependencies": {
     "vue": "^2.6.11"
