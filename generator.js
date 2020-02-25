@@ -1,3 +1,4 @@
+const { writeFileSync } = require("fs");
 const { generateComponentJS } = require("./lib");
 
 const header = `
@@ -25,4 +26,4 @@ const file = `${header}
 ${generateComponentJS()}
 `;
 
-fs.writeFileSync("./index.js", file);
+writeFileSync("./index.js", file);
