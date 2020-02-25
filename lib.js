@@ -1,4 +1,4 @@
-import { existsSync, readdirSync } from "fs";
+const { existsSync, readdirSync } = require("fs");
 
 function getComponents() {
   if (existsSync("./node_modules")) {
