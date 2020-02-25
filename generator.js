@@ -1,18 +1,8 @@
-const fs = require("fs");
+const { generateComponentJS } = require("./lib");
 
-let components = [];
+const header = `
+import Vue from 'vue'
 
-if (fs.existsSync("./node_modules")) {
-  components = fs
-    .readdirSync("./node_modules/vue2-leaflet/dist/components")
-    .map(file => file.split(".")[0]);
-} else {
-  components = fs
-    .readdirSync("../vue2-leaflet/dist/components")
-    .map(file => file.split(".")[0]);
-}
-
-const fixFunction = `
 let fixed = false
 
 async function fixLeaflet() {
@@ -28,23 +18,11 @@ async function fixLeaflet() {
     iconUrl: require('leaflet/dist/images/marker-icon.png'),
     shadowUrl: require('leaflet/dist/images/marker-shadow.png')
   })
-}`;
-
-const header = `import Vue from 'vue'`;
-
-function handleComponent(cmp) {
-  return `
-Vue.component("${cmp}", resolve => {
-  fixLeaflet();
-  import("vue2-leaflet/dist/components/${cmp}.js")
-    .then(component => component.default || component)
-    .then(resolve);
-});`;
 }
+`;
 
 const file = `${header}
-${fixFunction}
-${components.map(handleComponent).join("\n")}
+${generateComponentJS()}
 `;
 
 fs.writeFileSync("./index.js", file);
