@@ -13,4 +13,4 @@ In nuxt.config.js add
     { src: '~/plugins/leaflet.ts', mode: 'client' }
   ]
 }
-2```
+```

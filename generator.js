@@ -1,8 +1,16 @@
 const fs = require("fs");
 
-const components = fs
-  .readdirSync("./node_modules/vue2-leaflet/dist/components")
-  .map(file => file.split(".")[0]);
+let components = [];
+
+if (fs.existsSync("./node_modules")) {
+  components = fs
+    .readdirSync("./node_modules/vue2-leaflet/dist/components")
+    .map(file => file.split(".")[0]);
+} else {
+  components = fs
+    .readdirSync("../vue2-leaflet/dist/components")
+    .map(file => file.split(".")[0]);
+}
 
 const fixFunction = `
 let fixed = false
