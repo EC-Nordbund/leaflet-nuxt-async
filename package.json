@@ -7,6 +7,11 @@
     "leaflet": "^1.6.0",
     "vue2-leaflet": "^2.5.2"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mathe42/leaflet-nuxt-async"
+  },
+  "homepage": "https://github.com/mathe42/leaflet-nuxt-async",
   "scripts": {
     "prepublish": "node generator.js"
   },
