@@ -1,5 +1,22 @@
 const { writeFileSync } = require("fs");
-const { generateComponentJS } = require("./lib");
+const { getComponents } = require("../lib");
+
+function handleComponent(cmp) {
+  return `
+Vue.component("${cmp}", resolve => {
+  fixLeaflet();
+  import('leaflet/dist/leaflet.css');
+  import("vue2-leaflet/dist/components/${cmp}.js")
+    .then(component => component.default || component)
+    .then(resolve);
+});`;
+}
+
+function generateComponentJS() {
+  return getComponents()
+    .map(handleComponent)
+    .join("\n");
+}
 
 const header = `
 import Vue from 'vue'
@@ -26,4 +43,4 @@ const file = `${header}
 ${generateComponentJS()}
 `;
 
-writeFileSync("./index.js", file);
+writeFileSync("./standard/index.js", file);

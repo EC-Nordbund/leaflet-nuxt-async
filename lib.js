@@ -15,20 +15,4 @@ function getComponents() {
   return components;
 }
 
-function handleComponent(cmp) {
-  return `
-Vue.component("${cmp}", resolve => {
-  fixLeaflet();
-  import("vue2-leaflet/dist/components/${cmp}.js")
-    .then(component => component.default || component)
-    .then(resolve);
-});`;
-}
-
-function generateComponentJS() {
-  return getComponents()
-    .map(handleComponent)
-    .join("\n");
-}
-
-module.exports = { generateComponentJS, getComponents };
+module.exports = { getComponents };

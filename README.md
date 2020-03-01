@@ -1,13 +1,12 @@
 # leaflet-nuxt-async
 
+## Used Packages
+This helper Package uses vue2-leaflet. Please check the vue2-leaflet Docs for more Infos.
+
 ## Usage in Vue:
 
 1. Install Module via `yarn add leaflet-nuxt-async`
 2. Require Module in main file `import 'leaflet-nuxt-async';`
-3. Import css in main file `import 'leaflet/dist/leaflet.css'`
-
-## Used Packages
-This helper Package uses vue2-leaflet. Please check the vue2-leaflet Docs for more Infos.
 
 ## Usage in Nuxt:
 In nuxt.config.js add 
@@ -22,7 +21,7 @@ In nuxt.config.js add
 ## Usage in Nuxt witch vuetify-loader:
 ```js
 // Import on Top:
-const matcherLeaflet = require('leaflet-nuxt-async/vuetifyLoader.js')
+const matcherLeaflet = require('leaflet-nuxt-async/vuetifyLoader')
 
 match(_originalTag, { camelTag }) {
   const checkLeaflet = matcherLeaflet(camelTag)
@@ -33,8 +32,10 @@ match(_originalTag, { camelTag }) {
 
 ```
 
-You can use this module with vuetify loader also without nuxt. But `process.client` has to be true only on client and not while SSR. Also you should wrap your maps in `<no-ssr>` or `<client-only>` when useing SSR.
+You can use this module with vuetify loader also without nuxt. But `process.client` has to be true only on client and not while SSR. 
 
+## Useing SSR
+You should wrap your maps in `<no-ssr>` or `<client-only>` when useing SSR.
 
 ## What does it do?
 
@@ -57,4 +58,7 @@ if(process.client) {
 
 ```
 
-In Nuxt you can savely use `require('nuxt')` in methods and in the mounted hoock.
+In Nuxt you can savely use `require('leaflet')` in methods and in the mounted hoock.
+
+## Treeshaking
+This Package is build with Treeshaking in Mind so not used Components are in extra chunks or removed. For leaflet consider useing our Fork EC-Nordbund/leaflet for treeshaking leaflet.

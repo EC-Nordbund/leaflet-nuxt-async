@@ -1,8 +1,10 @@
 const fs = require("fs");
-const lib = require("./lib");
+const lib = require("../lib");
 
-if (!fs.existsSync("./vuetifyLoaderCmp")) {
-  fs.mkdirSync("./vuetifyLoaderCmp");
+const VUETIFY_LOADER_CMP_DIR = "./vuetifyLoaderCmp/";
+
+if (!fs.existsSync(VUETIFY_LOADER_CMP_DIR)) {
+  fs.mkdirSync(VUETIFY_LOADER_CMP_DIR);
 }
 
 lib.getComponents().forEach(cmp => {
@@ -15,7 +17,7 @@ lib.getComponents().forEach(cmp => {
 
     module.exports = async () => {
       if(process.client) {
-        import('leaflet-nuxt-async/vuetifyLoaderFix.js')
+        import('leaflet-nuxt-async/vuetifyLoader/vuetifyLoaderFix.js')
         return import('vue2-leaflet/dist/components/${cmp}.js').then(cmp=>cmp.default || cmp)
       } else {
         return tmpCmp
@@ -23,5 +25,5 @@ lib.getComponents().forEach(cmp => {
     }
   `;
 
-  fs.writeFileSync("./vuetifyLoaderCmp/" + cmp + ".js", file);
+  fs.writeFileSync(VUETIFY_LOADER_CMP_DIR + cmp + ".js", file);
 });

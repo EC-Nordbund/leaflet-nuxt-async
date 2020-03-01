@@ -1,10 +1,9 @@
 {
   "name": "leaflet-nuxt-async",
-  "version": "3.2.2",
-  "main": "index.js",
+  "version": "4.0.0",
+  "main": "standard/index.js",
   "license": "MIT",
   "dependencies": {
-    "leaflet": "^1.6.0",
     "vue2-leaflet": "^2.5.2"
   },
   "repository": {
@@ -13,9 +12,10 @@
   },
   "homepage": "https://github.com/mathe42/leaflet-nuxt-async",
   "scripts": {
-    "prepublish": "node generator.js && node vuetifyLoaderGenerator.js"
+    "prepublish": "node ./standard/generator.js && node ./vuetifyLoader/vuetifyLoaderGenerator.js"
   },
   "peerDependencies": {
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "leaflet": "*"
   }
 }
