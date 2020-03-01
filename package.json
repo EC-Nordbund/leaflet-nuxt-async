@@ -8,9 +8,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mathe42/leaflet-nuxt-async"
+    "url": "https://github.com/EC-Nordbund/leaflet-nuxt-async"
   },
-  "homepage": "https://github.com/mathe42/leaflet-nuxt-async",
+  "homepage": "https://github.com/EC-Nordbund/leaflet-nuxt-async",
   "scripts": {
     "prepublish": "node ./standard/generator.js && node ./vuetifyLoader/vuetifyLoaderGenerator.js"
   },
