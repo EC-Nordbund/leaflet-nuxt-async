@@ -31,4 +31,4 @@ function generateComponentJS() {
     .join("\n");
 }
 
-module.exports = { generateComponentJS };
+module.exports = { generateComponentJS, getComponents };
