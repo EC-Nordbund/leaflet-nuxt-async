@@ -2,6 +2,8 @@ import Vue from 'vue'
 
 let fixed = false
 
+const noOpCmp = {render(h){return h('p', ['Fehler im SSR'])}}
+
 async function fixLeaflet() {
   if (fixed) {
     return
