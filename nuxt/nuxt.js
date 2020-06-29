@@ -4,6 +4,7 @@ const { getComponents } = require("../lib");
 function handleComponent(cmp) {
   return `
 Vue.component("${cmp}", resolve => {
+  if(!process.client) { return resolve(noOpCmp) }
   fixLeaflet();
   import('leaflet/dist/leaflet.css');
   import("vue2-leaflet/dist/components/${cmp}.js")
