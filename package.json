@@ -4,7 +4,7 @@
   "main": "standard/index.js",
   "license": "MIT",
   "dependencies": {
-    "vue2-leaflet": "^2.5.2"
+    "vue2-leaflet": "^2.6.0"
   },
   "repository": {
     "type": "git",
